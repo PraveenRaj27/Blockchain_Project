@@ -1,0 +1,25 @@
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      - MONGO_URL=mongodb+srv://Magesh16:magesh@cluster0.l4csc.mongodb.net/Election3?retryWrites=true&w=majority
+      - secretKey=5c56ae2d93a0dc1de1fe3a0d32a551f1eee6bf4c196913ab4b2460f8ffec6e6c003e95faf064a0be3c2aee72cc3f05a8b64750e217845678b605b4d7ca1bbdf2
+    # links:
+    #   - mongo
+    # depends_on:
+    #   - mongo
+  # mongo:
+  #   container_name: mongo
+  #   image: mongo
+  #   volumes:
+  #     - ./data:/data/Election3
+  #   ports:
+  #     - "27017:27017"
